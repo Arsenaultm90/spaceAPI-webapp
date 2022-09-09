@@ -1,13 +1,15 @@
 import React from 'react';
 import './InfoPanel.css';
 import MarsDesc from './mars/MarsDesc';
+import Navbar from './navbar/Navbar';
 
-const InfoPanel = ({ planetData }) => {
+const InfoPanel = ({ planetData, setPlanet }) => {
 	return (
 		<>
 			{planetData && (
 				<div className='info-panel'>
-					<h1 className='planet-title'>{planetData.name}</h1>
+					<Navbar setPlanet={setPlanet} />
+					<h1 className='planet-title'>{planetData.englishName}</h1>
 					<table className='info-table'>
 						<tbody>
 							<tr className='body-row'>
@@ -17,11 +19,23 @@ const InfoPanel = ({ planetData }) => {
 							<tr className='moon-row'>
 								<td className='moon-title'>Moons...</td>
 								<td className='planet-info'>
-									{planetData?.moons
-										? planetData.moons.map((moon) => {
-												return <p>{moon.moon}</p>;
-										  })
-										: 'None'}
+									{Array.isArray(planetData.moons) &&
+									planetData?.moons.length < 5 ? (
+										planetData.moons.map((moon) => {
+											return <p>{moon.moon}</p>;
+										})
+									) : Array.isArray(planetData.moons) &&
+									  planetData.moons.length > 5 ? (
+										<select className='dropdown'>
+											<optgroup>
+												{planetData.moons.map((moon) => {
+													return <option>{moon.moon}</option>;
+												})}
+											</optgroup>
+										</select>
+									) : (
+										'None'
+									)}
 								</td>
 							</tr>
 							<tr className='temp-row'>

@@ -51,3 +51,15 @@ tr {
 	justify-content: center;
 	margin-top: 50px;
 }
+
+.dropdown {
+	background-color: transparent;
+	outline: none;
+}
+
+.dropdown optgroup {
+	font-family: 'Greenscr';
+	font-size: 2rem;
+	display: flex;
+	justify-content: end;
+}
