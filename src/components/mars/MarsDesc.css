@@ -1,0 +1,14 @@
+* {
+	color: #48d08a;
+}
+
+.mars-desc {
+	width: 70%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.mars-desc-content {
+	width: 100%;
+}

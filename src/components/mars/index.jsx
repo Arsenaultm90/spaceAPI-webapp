@@ -1,10 +1,12 @@
 import { useFrame, useLoader } from '@react-three/fiber';
-import React, { useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { TextureLoader } from 'three';
 import MarsDiffuse from '../../assets/textures/mars/mars_4k_color.jpeg';
 import MarsNormal from '../../assets/textures/mars/mars_4k_normal.jpeg';
 
-const Mars = () => {
+const Mars = ({ setPlanetData }) => {
+	useEffect(() => {}, []);
+
 	const [diffuseMap, normalMap] = useLoader(TextureLoader, [
 		MarsDiffuse,
 		MarsNormal,
@@ -18,7 +20,7 @@ const Mars = () => {
 
 	return (
 		<>
-			<mesh ref={marsRef}>
+			<mesh ref={marsRef} position={[-0.5, 0, 0.5]}>
 				<sphereGeometry args={[1, 64, 64]} />
 				<meshPhongMaterial color='red' />
 				<meshStandardMaterial map={diffuseMap} normalMap={normalMap} />

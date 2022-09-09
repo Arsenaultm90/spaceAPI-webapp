@@ -1,3 +1,10 @@
+@font-face {
+	font-family: 'Greenscr';
+	src: url('./font/Greenscr.ttf') format('truetype');
+	font-weight: normal;
+	font-style: normal;
+}
+
 * {
 	border: 0;
 	padding: 0;
