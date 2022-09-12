@@ -49,6 +49,7 @@ const InfoPanel = ({ planetData, setPlanet }) => {
 							<tr className='moon-row'>
 								<td className='moon-title'>Moons...</td>
 								<td className='planet-info'>
+									{/* This method checks for an array on the returned object and changes its display to a dropdown if the array length is larger than 5*/}
 									{Array.isArray(planetData.moons) &&
 									planetData?.moons.length <= 5 ? (
 										planetData.moons.map((moon) => {

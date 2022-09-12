@@ -1,4 +1,13 @@
-import { useEffect, useState, useRef } from 'react';
+//=========================================================================================================
+// Planet Info Website
+// This website serves mainly as a project to garner better skills in Authentication, React,
+//	Firebase, and ThreeJS
+//
+// Framework/Libraries:
+// React, ThreeJS, React Fiber 3,  NetlifyCLI, Firebase
+//=========================================================================================================
+
+import { useEffect, useState } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
 import { Stars } from '@react-three/drei';
 import Mars from './components/mars/index';
