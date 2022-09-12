@@ -1,14 +1,10 @@
 import { useFrame, useLoader } from '@react-three/fiber';
 import React, { useRef } from 'react';
 import { TextureLoader } from 'three';
-import earthDiffuse from '../../assets/textures/earth/earth_diffuse.jpeg';
-import earthNormal from '../../assets/textures/earth/earth_normal.jpeg';
+import jupiterDiffuse from '../../assets/textures/jupiter/jupiter.jpeg';
 
-const Earth = () => {
-	const [diffuseMap, normalMap] = useLoader(TextureLoader, [
-		earthDiffuse,
-		earthNormal,
-	]);
+const Jupiter = () => {
+	const [diffuseMap] = useLoader(TextureLoader, [jupiterDiffuse]);
 
 	const earthRef = useRef();
 
@@ -21,10 +17,10 @@ const Earth = () => {
 			<mesh ref={earthRef} position={[-0.5, 0, 0.5]}>
 				<sphereGeometry args={[1, 64, 64]} />
 				<meshPhongMaterial color='red' />
-				<meshStandardMaterial map={diffuseMap} normalMap={normalMap} />
+				<meshStandardMaterial map={diffuseMap} />
 			</mesh>
 		</>
 	);
 };
 
-export default Earth;
+export default Jupiter;

@@ -3,8 +3,12 @@ import { Canvas } from '@react-three/fiber';
 import { Stars } from '@react-three/drei';
 import Mars from './components/mars/index';
 import Earth from './components/earth/index';
+import Jupiter from './components/jupiter/Jupiter';
 import InfoPanel from './components/InfoPanel';
 import { fetchData } from './api/fetchData';
+import Mercury from './components/mercury/Mercury';
+import Neptune from './components/neptune/Neptune';
+import Saturn from './components/saturn/Saturn';
 
 function App() {
 	const [planet, setPlanet] = useState('earth');
@@ -32,6 +36,14 @@ function App() {
 					<Mars />
 				) : planet === 'earth' ? (
 					<Earth />
+				) : planet === 'jupiter' ? (
+					<Jupiter />
+				) : planet === 'mercury' ? (
+					<Mercury />
+				) : planet === 'neptune' ? (
+					<Neptune />
+				) : planet === 'saturn' ? (
+					<Saturn />
 				) : (
 					<Earth />
 				)}
