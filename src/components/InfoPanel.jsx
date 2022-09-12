@@ -1,14 +1,43 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './InfoPanel.css';
 import MarsDesc from './mars/MarsDesc';
+import MercuryDesc from './mercury/MercuryDesc';
+import VenusDesc from './venus/VenusDesc';
 import Navbar from './navbar/Navbar';
+import EarthDesc from './earth/EarthDesc';
+import JupiterDesc from './jupiter/JupiterDesc';
+import UranusDesc from './uranus/UranusDesc';
+import NeptuneDesc from './neptune/NeptuneDesc';
+import SaturnDesc from './saturn/SaturnDesc';
+import Modal from './signin/Modal';
+import RegisterModal from './register/RegisterModal';
 
 const InfoPanel = ({ planetData, setPlanet }) => {
+	const [signIn, setSignIn] = useState(false);
+	const [modalIsOpen, setModalIsOpen] = useState(false);
+	const [registerIsOpen, setRegisterIsOpen] = useState(false);
+
 	return (
 		<>
+			<Modal
+				setSignIn={setSignIn}
+				setPlanet={setPlanet}
+				modalIsOpen={modalIsOpen}
+				setModalIsOpen={setModalIsOpen}
+				setRegisterIsOpen={setRegisterIsOpen}
+			/>
+			<RegisterModal
+				registerIsOpen={registerIsOpen}
+				setRegisterIsOpen={setRegisterIsOpen}
+				setModalIsOpen={setModalIsOpen}
+			/>
 			{planetData && (
 				<div className='info-panel'>
-					<Navbar setPlanet={setPlanet} />
+					<Navbar
+						setPlanet={setPlanet}
+						setModalIsOpen={setModalIsOpen}
+						signIn={signIn}
+					/>
 					<h1 className='planet-title'>{planetData.englishName}</h1>
 					<table className='info-table'>
 						<tbody>
@@ -80,8 +109,20 @@ const InfoPanel = ({ planetData, setPlanet }) => {
 					<div className='info-container'>
 						{planetData.name === 'Mars' ? (
 							<MarsDesc />
-						) : planetData.name === 'Earth' ? (
-							<MarsDesc />
+						) : planetData.englishName === 'Earth' ? (
+							<EarthDesc />
+						) : planetData.name === 'Mercure' ? (
+							<MercuryDesc />
+						) : planetData.englishName === 'Venus' ? (
+							<VenusDesc />
+						) : planetData.englishName === 'Jupiter' ? (
+							<JupiterDesc />
+						) : planetData.englishName === 'Uranus' ? (
+							<UranusDesc />
+						) : planetData.englishName === 'Neptune' ? (
+							<NeptuneDesc />
+						) : planetData.englishName === 'Saturn' ? (
+							<SaturnDesc />
 						) : null}
 					</div>
 				</div>

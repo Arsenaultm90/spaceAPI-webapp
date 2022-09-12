@@ -1,12 +1,15 @@
 import { useFrame, useLoader } from '@react-three/fiber';
-import React, { useRef } from 'react';
+import React, { useLayoutEffect, useRef } from 'react';
 import { TextureLoader } from 'three';
 import saturnDiffuse from '../../assets/textures/saturn/saturn.jpeg';
+import ringDiffuse from '../../assets/textures/saturn/saturn_ring.png';
 
 const Saturn = () => {
 	const [diffuseMap] = useLoader(TextureLoader, [saturnDiffuse]);
+	const [ringDiffuseMap] = useLoader(TextureLoader, [ringDiffuse]);
 
 	const saturnRef = useRef();
+	const ringRef = useRef();
 
 	useFrame(() => {
 		saturnRef.current.rotation.y += 0.001;

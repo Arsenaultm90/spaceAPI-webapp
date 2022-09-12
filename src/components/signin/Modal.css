@@ -1,0 +1,70 @@
+.modal-bg {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background-color: rgba(0, 0, 0, 0.7);
+	z-index: 5;
+}
+
+.modal-container {
+	position: fixed;
+	width: 500px;
+	height: 300px;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	background-color: black;
+	border: 2px solid #46d08a;
+	z-index: 10;
+}
+
+.form-container {
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-evenly;
+	align-items: center;
+	font-family: 'Greenscr';
+}
+
+.closeBtn {
+	position: absolute;
+	right: 0;
+	top: 0;
+	width: 20px;
+	height: 20px;
+	background-color: black;
+	border: 2px solid #46d08a;
+	margin: 5px 5px 0 0;
+}
+
+.closeBtn:hover {
+	background-color: #46d08a;
+	color: black;
+}
+
+.form-container input {
+	background-color: black;
+	border-bottom: 2px solid #46d08a;
+	padding: 5px;
+}
+
+.form-container input:-webkit-autofill {
+	transition: background-color 600000s 0s, black 600000s 0s;
+}
+
+.button-container button {
+	width: 100px;
+	height: 30px;
+	background-color: black;
+	color: #46d08a;
+	border: 2px solid #46d08a;
+	margin: 0 10px;
+}
+
+.form-container button:hover {
+	background-color: #46d08a;
+	color: black;
+}

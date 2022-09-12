@@ -1,13 +1,11 @@
 import React from 'react';
 import './Navbar.css';
 
-const Navbar = ({ setPlanet }) => {
+const Navbar = ({ setPlanet, setModalIsOpen, signIn }) => {
 	const clickHandler = (e) => {
-		console.log(e.currentTarget.getAttribute('data-value') === 'Mercury');
 		switch (e.currentTarget.getAttribute('data-value')) {
 			case 'Mercury':
 				setPlanet('mercury');
-				console.log('blah');
 				break;
 			case 'Venus':
 				setPlanet('venus');
@@ -30,12 +28,17 @@ const Navbar = ({ setPlanet }) => {
 			case 'Neptune':
 				setPlanet('neptune');
 				break;
+			case '?':
+				if (signIn) {
+					setPlanet('pluto');
+				} else {
+					setModalIsOpen(true);
+				}
+				break;
 			default:
 				break;
 		}
 	};
-
-	const secretClickHandler = () => {};
 
 	return (
 		<nav className='navbar'>
@@ -64,7 +67,9 @@ const Navbar = ({ setPlanet }) => {
 				<li onClick={clickHandler} data-value='Neptune'>
 					Neptune
 				</li>
-				<li onClick={secretClickHandler}>?</li>
+				<li onClick={clickHandler} data-value='?'>
+					?
+				</li>
 			</ul>
 		</nav>
 	);

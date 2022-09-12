@@ -9,6 +9,9 @@ import { fetchData } from './api/fetchData';
 import Mercury from './components/mercury/Mercury';
 import Neptune from './components/neptune/Neptune';
 import Saturn from './components/saturn/Saturn';
+import Uranus from './components/uranus/Uranus';
+import Venus from './components/venus/Venus';
+import { AuthProvider } from './components/context/authContext';
 
 function App() {
 	const [planet, setPlanet] = useState('earth');
@@ -25,30 +28,36 @@ function App() {
 
 	return (
 		<div className='App' style={{ width: '100%', height: '100%' }}>
-			<Canvas
-				camera={{ position: [2, 0, 1], fov: 60, near: 1, far: 1000 }}
-				style={{ display: 'block', height: '100vh', background: 'black' }}
-			>
-				<Stars />
-				<ambientLight intensity={0.3} />
-				<spotLight position={[10, 15, 10]} angle={0.3} intensity={0.8} />
-				{planet === 'mars' ? (
-					<Mars />
-				) : planet === 'earth' ? (
-					<Earth />
-				) : planet === 'jupiter' ? (
-					<Jupiter />
-				) : planet === 'mercury' ? (
-					<Mercury />
-				) : planet === 'neptune' ? (
-					<Neptune />
-				) : planet === 'saturn' ? (
-					<Saturn />
-				) : (
-					<Earth />
-				)}
-			</Canvas>
-			<InfoPanel planetData={planetData} setPlanet={setPlanet} />
+			<AuthProvider>
+				<Canvas
+					camera={{ position: [2, 0, 1], fov: 60, near: 1, far: 1000 }}
+					style={{ display: 'block', height: '100vh', background: 'black' }}
+				>
+					<Stars />
+					<ambientLight intensity={0.3} />
+					<spotLight position={[10, 15, 10]} angle={0.3} intensity={0.8} />
+					{planet === 'mars' ? (
+						<Mars />
+					) : planet === 'earth' ? (
+						<Earth />
+					) : planet === 'jupiter' ? (
+						<Jupiter />
+					) : planet === 'mercury' ? (
+						<Mercury />
+					) : planet === 'neptune' ? (
+						<Neptune />
+					) : planet === 'saturn' ? (
+						<Saturn />
+					) : planet === 'uranus' ? (
+						<Uranus />
+					) : planet === 'venus' ? (
+						<Venus />
+					) : (
+						<Earth />
+					)}
+				</Canvas>
+				<InfoPanel planetData={planetData} setPlanet={setPlanet} />
+			</AuthProvider>
 		</div>
 	);
 }

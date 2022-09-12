@@ -1,10 +1,10 @@
 import React from 'react';
-import './MarsDesc.css';
+import '../desc.css';
 
 const MarsDesc = () => {
 	return (
-		<div className='mars-desc'>
-			<p className='mars-desc-content'>
+		<div className='desc'>
+			<p className='desc-content'>
 				Mars is the fourth planet from the Sun and the second-smallest planet in
 				the Solar System, being larger than only Mercury. In the English
 				language, Mars is named for the Roman god of war. Mars is a terrestrial
