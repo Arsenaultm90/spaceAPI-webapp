@@ -11,6 +11,7 @@ import NeptuneDesc from './neptune/NeptuneDesc';
 import SaturnDesc from './saturn/SaturnDesc';
 import Modal from './signin/Modal';
 import RegisterModal from './register/RegisterModal';
+import PlutoDesc from './pluto/PlutoDesc';
 
 const InfoPanel = ({ planetData, setPlanet }) => {
 	const [signIn, setSignIn] = useState(false);
@@ -49,9 +50,9 @@ const InfoPanel = ({ planetData, setPlanet }) => {
 								<td className='moon-title'>Moons...</td>
 								<td className='planet-info'>
 									{Array.isArray(planetData.moons) &&
-									planetData?.moons.length < 5 ? (
+									planetData?.moons.length <= 5 ? (
 										planetData.moons.map((moon) => {
-											return <p>{moon.moon}</p>;
+											return <p>{moon.moon},</p>;
 										})
 									) : Array.isArray(planetData.moons) &&
 									  planetData.moons.length > 5 ? (
@@ -123,6 +124,8 @@ const InfoPanel = ({ planetData, setPlanet }) => {
 							<NeptuneDesc />
 						) : planetData.englishName === 'Saturn' ? (
 							<SaturnDesc />
+						) : planetData.englishName === 'Pluto' ? (
+							<PlutoDesc />
 						) : null}
 					</div>
 				</div>

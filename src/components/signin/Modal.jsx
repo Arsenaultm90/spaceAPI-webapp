@@ -27,6 +27,7 @@ const Modal = ({
 			setError('');
 			setLoading(true);
 			await login(emailRef.current.value, passwordRef.current.value);
+			console.log('sign in handler');
 			setModalIsOpen(false);
 			setSignIn(true);
 			setPlanet('pluto');
@@ -35,7 +36,6 @@ const Modal = ({
 		}
 
 		setLoading(false);
-		login(emailRef.current.value, passwordRef.current.value);
 	};
 
 	const registerHandler = () => {
@@ -48,13 +48,25 @@ const Modal = ({
 		<>
 			<div className='modal-bg' />
 			<div className='modal-container'>
-				<form className='form-container' action='sbumit'>
+				<form className='form-container' action='submit' method='POST'>
 					<button className='closeBtn' onClick={closeHandler}>
 						X
 					</button>
 					<h3>Please sign in or register...</h3>
-					<input name='username' type='text' placeholder='Username' />
-					<input name='password' type='text' placeholder='Password' />
+					<input
+						ref={emailRef}
+						name='username'
+						type='email'
+						placeholder='Username'
+						required
+					/>
+					<input
+						ref={passwordRef}
+						name='password'
+						type='password'
+						placeholder='Password'
+						required
+					/>
 					<div className='button-container'>
 						<button onClick={signInHandler}>Login</button>
 						<button onClick={registerHandler}>Register</button>

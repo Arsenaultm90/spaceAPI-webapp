@@ -1,24 +1,24 @@
 import { useFrame, useLoader } from '@react-three/fiber';
 import React, { useRef } from 'react';
 import { TextureLoader } from 'three';
-import MarsDiffuse from '../../assets/textures/mars/mars_4k_color.jpeg';
-import MarsNormal from '../../assets/textures/mars/mars_4k_normal.jpeg';
+import plutoDiffuse from '../../assets/textures/pluto/pluto.jpeg';
+import plutoNormal from '../../assets/textures/pluto/pluto_normal.png';
 
-const Mars = () => {
+const Pluto = () => {
 	const [diffuseMap, normalMap] = useLoader(TextureLoader, [
-		MarsDiffuse,
-		MarsNormal,
+		plutoDiffuse,
+		plutoNormal,
 	]);
 
-	const marsRef = useRef();
+	const plutoRef = useRef();
 
 	useFrame(() => {
-		marsRef.current.rotation.y += 0.001;
+		plutoRef.current.rotation.y += 0.001;
 	});
 
 	return (
 		<>
-			<mesh ref={marsRef} position={[-0.5, 0, 0.5]}>
+			<mesh ref={plutoRef} position={[-0.5, 0, 0.5]}>
 				<sphereGeometry args={[1, 64, 64]} />
 				<meshPhongMaterial color='red' />
 				<meshStandardMaterial map={diffuseMap} normalMap={normalMap} />
@@ -27,4 +27,4 @@ const Mars = () => {
 	);
 };
 
-export default Mars;
+export default Pluto;

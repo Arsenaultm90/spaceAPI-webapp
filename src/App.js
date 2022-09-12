@@ -1,5 +1,5 @@
-import { useEffect, useState } from 'react';
-import { Canvas } from '@react-three/fiber';
+import { useEffect, useState, useRef } from 'react';
+import { Canvas, useFrame } from '@react-three/fiber';
 import { Stars } from '@react-three/drei';
 import Mars from './components/mars/index';
 import Earth from './components/earth/index';
@@ -12,6 +12,8 @@ import Saturn from './components/saturn/Saturn';
 import Uranus from './components/uranus/Uranus';
 import Venus from './components/venus/Venus';
 import { AuthProvider } from './components/context/authContext';
+import Pluto from './components/pluto/Pluto';
+import { rgba } from '@react-spring/shared';
 
 function App() {
 	const [planet, setPlanet] = useState('earth');
@@ -35,7 +37,7 @@ function App() {
 				>
 					<Stars />
 					<ambientLight intensity={0.3} />
-					<spotLight position={[10, 15, 10]} angle={0.3} intensity={0.8} />
+					<spotLight position={[10, 15, 15]} angle={0.5} intensity={0.8} />
 					{planet === 'mars' ? (
 						<Mars />
 					) : planet === 'earth' ? (
@@ -52,6 +54,8 @@ function App() {
 						<Uranus />
 					) : planet === 'venus' ? (
 						<Venus />
+					) : planet === 'pluto' ? (
+						<Pluto />
 					) : (
 						<Earth />
 					)}
